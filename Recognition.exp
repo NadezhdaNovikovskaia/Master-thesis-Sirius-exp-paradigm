@@ -1,5 +1,5 @@
-<ver>21</ver>
-<efn>F:\парадигма Сочи\Learning\Verification\2_Recognition\Recognition.exp</efn>
+<ver>21.1</ver>
+<efn>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition\Recognition.exp</efn>
 <author></author>
 <con>
 <pause>P</pause>
@@ -41,12 +41,12 @@
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>F:\парадигма Сочи\Learning\Verification\2_Recognition</dsd>
+<dsd>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition</dsd>
 <dwm>0</dwm>
 <dxv>8</dxv>
 <efs>
-<filename>F:\парадигма Сочи\Learning\Verification\2_Recognition\Recognition.sce</filename>
-<filename>F:\парадигма Сочи\Learning\Verification\2_Recognition\Recognition.pcl</filename>
+<filename>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition\Recognition.sce</filename>
+<filename>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition\Recognition.pcl</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version></exp_version>
@@ -121,7 +121,7 @@
 <idt>0</idt>
 <ilc>0</ilc>
 <ip_chans></ip_chans>
-<lfd>F:\парадигма Сочи\Learning\Verification\2_Recognition</lfd>
+<lfd>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition</lfd>
 <lnb>0</lnb>
 <lno>4</lno>
 <log>
@@ -131,9 +131,9 @@
 <its>0</its>
 <meta>1</meta>
 <pien>0</pien>
-<set_def_file>F:\парадигма Сочи\Learning\Verification\2_Recognition\Recognition.sdf</set_def_file>
+<set_def_file>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition\Recognition.sdf</set_def_file>
 <stimulus_list>0</stimulus_list>
-<subject_id>Learning_Recognition_2</subject_id>
+<subject_id>re_learing_recognition_S_2</subject_id>
 <subject_id_pol>2</subject_id_pol>
 <video_list>0</video_list>
 <warnings>1</warnings>
@@ -153,8 +153,23 @@
 <one_processor>2</one_processor>
 <oports>
 <p>
-<mtype>none</mtype>
-<pindex>4294967295</pindex>
+<ama>0</ama>
+<ami>0</ami>
+<at>0</at>
+<dpw>5</dpw>
+<dsdi>0</dsdi>
+<dsi>0</dsi>
+<dsn>Data port</dsn>
+<igm>0</igm>
+<il>0</il>
+<ivm>0</ivm>
+<mtype>dig</mtype>
+<piai>LPT3</piai>
+<pian>Parallel Port</pian>
+<pihpn>LPT3</pihpn>
+<pindex>1</pindex>
+<rs>1</rs>
+<rt>0</rt>
 </p>
 </oports>
 <out_encrypt_key></out_encrypt_key>
@@ -236,26 +251,6 @@
 <device_type>3</device_type>
 <dx_device_type>0</dx_device_type>
 <name>HID Keyboard Device 1</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 2</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 3</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 4</name>
-</device>
-<device>
-<device_type>3</device_type>
-<dx_device_type>0</dx_device_type>
-<name>HID Keyboard Device 5</name>
 </device>
 <device>
 <abs_axis>
@@ -342,66 +337,29 @@
 <name>HID-compliant mouse 1</name>
 </device>
 <device>
-<abs_axis>
-<dead_zone>0</dead_zone>
-<max>1000</max>
-<min>-1000</min>
-<name>X-axis</name>
-<saturation>1</saturation>
-</abs_axis>
-<abs_axis>
-<dead_zone>0</dead_zone>
-<max>1000</max>
-<min>-1000</min>
-<name>Y-axis</name>
-<saturation>1</saturation>
-</abs_axis>
-<axis>
-<max>1000</max>
-<min>-1000</min>
-<name>X-axis</name>
-<restricted>1</restricted>
-<scale>1</scale>
-</axis>
-<axis>
-<max>1000</max>
-<min>-1000</min>
-<name>Y-axis</name>
-<restricted>1</restricted>
-<scale>1</scale>
-</axis>
-<axis>
-<max>1000</max>
-<min>-1000</min>
-<name>Wheel</name>
-<restricted>1</restricted>
-<scale>1</scale>
-</axis>
-<device_type>2</device_type>
-<dx_device_type>0</dx_device_type>
-<max_raw_pos>65535</max_raw_pos>
-<min_raw_pos>0</min_raw_pos>
-<name>HID-compliant mouse 2</name>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>USB Keyboard</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Corsair Gaming K70 LUX RGB Keyboard </name>
+<name>USB Keyboard 1</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>USB Device</name>
+<name>USB Keyboard 2</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>USB Device 1</name>
+<name>USB Keyboard 3</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>Corsair composite virtual input device</name>
+<name>USB Keyboard 4</name>
 </device>
 <device>
 <axis>
@@ -719,10 +677,14 @@
 <device_type>3</device_type>
 <dx_device_type>19</dx_device_type>
 <ibn>1</ibn>
+<ibn>2</ibn>
 <idn>Клавиатура</idn>
 <index>0</index>
+<index>1</index>
+<label></label>
 <label></label>
 <offset>2</offset>
+<offset>3</offset>
 </idv>
 <overrides></overrides>
 <sfn>all_scenarios</sfn>
@@ -732,19 +694,26 @@
 <device_type>3</device_type>
 <dx_device_type>19</dx_device_type>
 <ibn>1</ibn>
+<ibn>2</ibn>
 <idn>Клавиатура</idn>
 <index>0</index>
+<index>1</index>
+<label></label>
 <label></label>
 <offset>2</offset>
+<offset>3</offset>
 </idv>
 <overrides></overrides>
-<sfn>F:\парадигма Сочи\Learning\Verification\2_Recognition\Recognition.sce</sfn>
+<sfn>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\2_Recognition\Recognition.sce</sfn>
 </sce>
 <sct>
 <capture_device>
 <abort_on_max_drops>0</abort_on_max_drops>
 <bps></bps>
 <chan></chan>
+<closest_match>0</closest_match>
+<closest_match_max></closest_match_max>
+<closest_match_min>1, 16, 8000</closest_match_min>
 <do_rec_vol>0</do_rec_vol>
 <freq></freq>
 <ignore_drops>1</ignore_drops>

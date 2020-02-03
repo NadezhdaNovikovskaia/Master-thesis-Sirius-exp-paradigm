@@ -5,11 +5,13 @@ array <int> ids[0];      #ids
 array <int> word_ids[0]; 
 array <int> block_ids[0];
 array <int> trialsN[0];
+array <int> relearning_type_id[0];
+array <int> blockid_for_relearning[0];
 string info;             # Accumulate information about trials
 string tab = "	";        #tab
 string new_string = "\n";#new string 
-string filename2 = logfile.subject() + "_additional" + ".log"; #output file name
 int stimulation = 1;#SHOULD BE CHANGED!!!
+string filename2 = logfile.subject() + "_additional" + ".log"; #output file name
 # read scentences
 input_file f = new input_file;
 #reading the instruction file
@@ -36,12 +38,26 @@ begin
 	return 0;
 end;
 
+sub int getRetrainingTypeByBlockId(int blockId)
+begin
+	int counter=1;
+	loop until counter>blockid_for_relearning.count()
+	begin
+		if(blockid_for_relearning[counter]==blockId) then
+			return relearning_type_id[counter];
+		end;
+		counter=counter+1;
+	end;
+	return 0;
+end;
+
 # showing words
 sub showingWord(int id) 
 begin
 		word.set_caption(words[id]);
 		 word.redraw();
 		int type = getWordType(ids[id]);
+		int retraining_type = 0;
 		int block_type = 3;
 		if(type > 8 && type <= 16) then
 			block_type = 2;
@@ -57,23 +73,25 @@ begin
 			cross_trial.set_duration(100);
 			cross_trial.present();
 			cross_stim.set_port_code(type);
-			cross_trial.set_duration(1300);
+			cross_trial.present();
+			retraining_type = getRetrainingTypeByBlockId(type);
+			cross_stim.set_port_code(retraining_type);
+			cross_trial.set_duration(1200);
 		end;
 		cross_trial.present();
 	   #RT
 	    stimulus_data last = stimulus_manager.last_stimulus_data();
 		 int reaction_time =  last.reaction_time();
-		term.print_line("Word: "+words[id]);
-		term.print_line("RT: "+string(reaction_time));
-		term.print_line("button: "+string(last.button()));
 		bool verno = false;
 		if((last.button() == 1 && type <= 16 && type >= 1) || (last.button() == 2 && (type > 16 || type < 1))) then
 			verno = true;
 		end;
-		term.print_line("bool: "+string(verno));
-		term.print_line("sem: "+string(type));
-		term.print_line("abstractness: "+string(block_type));
-		info.append(string(ids[id])+tab+string(verno)+tab+string(reaction_time) + tab + string(last.button()) +tab+words[id]+tab+string(type)+tab+string(block_type)+tab+string(stimulation) +  new_string);
+		term.print_line("Word: "+words[id]);
+		term.print_line("RT: "+string(reaction_time));
+		term.print_line("button: "+string(last.button()));
+		term.print_line("type: "+string(type));
+		term.print_line("retraining type: "+string(retraining_type));
+		info.append(string(ids[id])+tab+string(verno)+tab+string(reaction_time) + tab + string(last.button()) +tab+words[id]+tab+string(type)+tab+string(block_type)+tab+string(stimulation)+tab+string(retraining_type) +  new_string);
 		#end RT	
 	end;
 # end showing words
@@ -100,6 +118,7 @@ end;
 f.close();
 term.print_line(words);
 term.print_line(ids);
+
 # end reading words
 f.open( "Generated8.txt" );
 f.set_delimiter( '\t' );
@@ -115,6 +134,21 @@ f.close();
 term.print_line(word_ids);
 term.print_line(block_ids);
 
+
+f.open( "Relearning_type_block_relation.txt" );
+f.set_delimiter( '\t' );
+loop until
+   f.end_of_file() 
+begin
+   if f.end_of_file() then break;
+   end;
+	relearning_type_id.add(f.get_int());
+   blockid_for_relearning.add(f.get_int());	
+end;
+f.close();
+
+term.print_line(relearning_type_id);
+term.print_line(blockid_for_relearning);
 #showing the instruction
 
 instruction.set_caption(instructions);
@@ -139,7 +173,7 @@ end;
 output_file file = new output_file;
 file.open(filename2, true);
 string information = "NAME: " + tab + logfile.subject() + new_string;
-information.append("id"+tab+"bool"+tab+"RT"+tab+"button"+tab+"word"+tab+"sem"+tab+"abs"+tab+"stim"+new_string);
+information.append("id"+tab+"bool"+tab+"RT"+tab+"button"+tab+"word"+tab+"sem"+tab+"abs"+tab+"stim"+tab+"retraining_type"+new_string);
 information.append(info);
 file.print(information);
 file.close();
