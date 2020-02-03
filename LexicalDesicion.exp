@@ -1,5 +1,5 @@
 <ver>21.1</ver>
-<efn>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision\LexicalDesicion.exp</efn>
+<efn>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision\LexicalDesicion.exp</efn>
 <author></author>
 <con>
 <pause>P</pause>
@@ -41,12 +41,12 @@
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision</dsd>
+<dsd>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision</dsd>
 <dwm>0</dwm>
 <dxv>8</dxv>
 <efs>
-<filename>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision\LexicalDesicion.sce</filename>
-<filename>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision\LexicalDesicion.pcl</filename>
+<filename>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision\LexicalDesicion.sce</filename>
+<filename>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision\LexicalDesicion.pcl</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version></exp_version>
@@ -121,7 +121,7 @@
 <idt>0</idt>
 <ilc>0</ilc>
 <ip_chans></ip_chans>
-<lfd>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision</lfd>
+<lfd>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision</lfd>
 <lnb>0</lnb>
 <lno>3</lno>
 <log>
@@ -131,9 +131,9 @@
 <its>0</its>
 <meta>1</meta>
 <pien>0</pien>
-<set_def_file>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision\LexicalDesicion.sdf</set_def_file>
+<set_def_file>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision\LexicalDesicion.sdf</set_def_file>
 <stimulus_list>0</stimulus_list>
-<subject_id>learning_lex</subject_id>
+<subject_id>re_learning_lex_S</subject_id>
 <subject_id_pol>2</subject_id_pol>
 <video_list>0</video_list>
 <warnings>1</warnings>
@@ -704,7 +704,7 @@
 <offset>3</offset>
 </idv>
 <overrides></overrides>
-<sfn>C:\Users\MR_team\Desktop\парадигма Сочи\Learning\Verification\3_Lexical decision\LexicalDesicion.sce</sfn>
+<sfn>C:\Users\MR_team\Desktop\парадигма Сочи\Re-learning\Verification\3_Lexical decision\LexicalDesicion.sce</sfn>
 </sce>
 <sct>
 <capture_device>
