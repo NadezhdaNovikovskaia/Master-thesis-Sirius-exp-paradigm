@@ -1,0 +1,182 @@
+# PCL program
+
+array <string> words[0]; #words 
+array <int> ids[0];      #ids
+array <int> word_ids[0]; 
+array <int> block_ids[0];
+array <int> trialsN[0];
+array <int> relearning_type_id[0];
+array <int> blockid_for_relearning[0];
+string info;             # Accumulate information about trials
+string tab = "	";        #tab
+string new_string = "\n";#new string 
+int stimulation = 1;#SHOULD BE CHANGED!!!
+string filename2 = logfile.subject() + "_additional" + ".log"; #output file name
+# read scentences
+input_file f = new input_file;
+#reading the instruction file
+f.open( "instruction.txt" );
+string instructions="";
+loop until
+   f.end_of_file() 
+begin
+instructions=instructions+f.get_string()+" ";
+end;
+f.close();
+# end reading instruction;
+
+sub string getWord(int wordId)
+begin
+	int counter=1;
+	loop until counter>ids.count()
+	begin
+		if(ids[counter]==wordId) then
+			return words[counter];
+		end;
+		counter=counter+1;
+	end;
+	return "";
+end;
+
+sub int getRetrainingTypeByBlockId(int blockId)
+begin
+	int counter=1;
+	loop until counter>blockid_for_relearning.count()
+	begin
+		if(blockid_for_relearning[counter]==blockId) then
+			return relearning_type_id[counter];
+		end;
+		counter=counter+1;
+	end;
+	return 0;
+end;
+
+# showing words
+sub showingWord(int id) 
+begin
+		string word_text = getWord(word_ids[id]);
+		word.set_caption(word_text);
+		 word.redraw();
+		int type = block_ids[id];
+		int retraining_type = 0;
+		int block_type = 3;
+		int role = type;
+		if(type > 8 && type <= 16) then
+			block_type = 2;
+			role = getRetrainingTypeByBlockId(type);;
+		end;
+		if(type >= 1 && type <= 8) then
+			block_type = 1;
+			role = getRetrainingTypeByBlockId(type);;
+		end; 
+		word_st.set_port_code(role);
+	    word_trial.present();
+		cross_trial.set_duration(1400);
+		cross_stim.set_port_code(word_ids[id]);
+		if(type >= 1 && type <= 16) then
+			cross_trial.set_duration(100);
+			cross_trial.present();
+			cross_stim.set_port_code(type);
+			cross_trial.present();
+			cross_trial.set_duration(1180);
+			cross_stim.set_port_code(0);
+		end;
+		cross_trial.present();
+	   #RT
+	    stimulus_data last = stimulus_manager.last_stimulus_data();
+		 int reaction_time =  last.reaction_time();
+		bool verno = false;
+		if((last.button() == 1 && type <= 16 && type >= 1) || (last.button() == 2 && (type > 16 || type < 1))) then
+			verno = true;
+		end;
+		term.print_line("Word: "+word_text);
+		term.print_line("RT: "+string(reaction_time));
+		term.print_line("button: "+string(last.button()));
+		term.print_line("type: "+string(type));
+		term.print_line("retraining type: "+string(retraining_type));
+		info.append(string(word_ids[id])+tab+string(verno)+tab+string(reaction_time) + tab + string(last.button()) +tab+word_text+tab+string(role)+tab+string(type)+tab+string(block_type)+tab+string(stimulation)+tab+string(retraining_type) +  new_string);
+		#end RT	
+	end;
+# end showing words
+
+#reading the words file
+f.open( "recognition.txt" );
+f.set_delimiter( '\t' );
+int count = 1;
+loop until
+   f.end_of_file() 
+begin
+   if f.end_of_file() then break;
+   end;
+	words.add(f.get_string());
+	ids.add(f.get_int());	
+end;
+f.close();
+term.print_line(words);
+term.print_line(ids);
+
+# end reading words
+f.open( "Generated.txt" );
+f.set_delimiter( '\t' );
+loop until
+   f.end_of_file() 
+begin
+   if f.end_of_file() then break;
+   end;
+	loop int sixtimes = 1;
+	until sixtimes > 6
+	begin
+		trialsN.add(count);
+		sixtimes = sixtimes +1;
+	end;
+	word_ids.add(f.get_int());
+   block_ids.add(f.get_int());
+	count=count+1;
+end;
+f.close();
+term.print_line(word_ids);
+term.print_line(block_ids);
+
+
+f.open( "Relearning_type_block_relation.txt" );
+f.set_delimiter( '\t' );
+loop until
+   f.end_of_file() 
+begin
+   if f.end_of_file() then break;
+   end;
+	relearning_type_id.add(f.get_int());
+   blockid_for_relearning.add(f.get_int());	
+end;
+f.close();
+
+term.print_line(relearning_type_id);
+term.print_line(blockid_for_relearning);
+#showing the instruction
+
+instruction.set_caption(instructions);
+instruction.set_max_text_width(1000);
+instruction.redraw();
+instruction_trial.present();
+# end showing instruction
+#shuffling array
+trialsN.shuffle();
+#showing word
+loop int i=1;
+until i>trialsN.count() #|| i>2
+begin
+		
+       showingWord(trialsN[i]);
+	    
+	   
+	i=i+1;
+end;
+#end showing word
+# recording info to the output file
+output_file file = new output_file;
+file.open(filename2, true);
+string information = "NAME: " + tab + logfile.subject() + new_string;
+information.append("id"+tab+"bool"+tab+"RT"+tab+"button"+tab+"word"+tab+"role"+tab+"sem"+tab+"abs"+tab+"stim"+tab+"retraining_type"+new_string);
+information.append(info);
+file.print(information);
+file.close();
